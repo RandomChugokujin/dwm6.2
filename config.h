@@ -11,17 +11,24 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "terminus:size=12:style=bold:antialias-true", "fontawesome:size=12:antialias=true" };
-static const char dmenufont[]       = "terminus:size=12";
+static const char *fonts[]          = { "terminus:size=12:style=bold:antialias=true", "fontawesome:size=12:antialias=true" };
+static const char dmenufont[]       = "terminus:size=12:style=bold:antialias=true";
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#3b4252";
 static const char col_gray3[]       = "#d8dee9";
 static const char col_gray4[]       = "#4c566a";
 static const char col_cyan[]        = "#81a1c1";
+static const unsigned int baralpha = 0xd0;
+static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+};
+static const unsigned int alphas[][3]      = {
+	/*               fg      bg        border     */
+	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */
@@ -77,9 +84,11 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-l", "20", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[] = { "librewolf", NULL};
+static const char *ytcmd[] = {"freetube", NULL};
+static const char *shutdowncmd[] = {"/home/brian/prompt.sh", "Do you want to shutdown?", "shutdown -h now"};
 
 //replace "amdgpu_b10 with your own device, copy device name from "brightnessctl -l"
 static const char *brightnessup[] = { "/usr/bin/brightnessctl", "set", "+10%", NULL };
@@ -93,6 +102,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
+    { MODKEY,                       XK_y,      spawn,          {.v = ytcmd } },
 	{ MODKEY,			            XK_F4,	   spawn,	       {.v = brightnessup} },
 	{ MODKEY,		            	XK_F3,	   spawn, 	       {.v = brightnessdown} },
 	{ MODKEY,		            	XK_F9,	   spawn,	       {.v = mute} },
@@ -145,6 +155,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { MODKEY|ShiftMask,             XK_F1,     spawn,          { .v = shutdowncmd} }
 };
 
 /* button definitions */
