@@ -89,6 +89,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[] = { "librewolf", NULL};
 static const char *ytcmd[] = {"freetube", NULL};
 static const char *shutdowncmd[] = {"/home/brian/prompt.sh", "Do you want to shutdown?", "shutdown -h now"};
+static const char *rebootcmd[] = {"/home/brian/prompt.sh", "Do you want to reboot?", "reboot"};
 
 //replace "amdgpu_b10 with your own device, copy device name from "brightnessctl -l"
 static const char *brightnessup[] = { "/usr/bin/brightnessctl", "set", "+10%", NULL };
@@ -155,7 +156,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    { MODKEY|ShiftMask,             XK_F1,     spawn,          { .v = shutdowncmd} }
+    { MODKEY|ShiftMask,             XK_F1,     spawn,          { .v = shutdowncmd} },
+    { MODKEY|ShiftMask,             XK_F2,     spawn,          { .v = rebootcmd} }
 };
 
 /* button definitions */
