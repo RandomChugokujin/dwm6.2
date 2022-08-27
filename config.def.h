@@ -4,6 +4,7 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx	    = 0;
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
@@ -12,7 +13,7 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "terminus:size=12:style=bold:antialias=true", "fontawesome:size=12:antialias=true" };
-static const char dmenufont[]       = "terminus:size=12";
+static const char dmenufont[]       = "terminus:size=12:style=bold:antialias=true";
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#3b4252";
 static const char col_gray3[]       = "#d8dee9";
@@ -32,16 +33,18 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "5", "6", "7", "8", "" };
+static const char *tags[] = { "", "", "", "", "", "6", "7", "8", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -84,9 +87,12 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-l", "20", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[] = { "librewolf", NULL};
+static const char *ytcmd[] = {"freetube", NULL};
+static const char *shutdowncmd[] = {"/home/brian/prompt.sh", "Do you want to shutdown?", "shutdown -h now"};
+static const char *rebootcmd[] = {"/home/brian/prompt.sh", "Do you want to reboot?", "reboot"};
 
 //replace "amdgpu_b10 with your own device, copy device name from "brightnessctl -l"
 static const char *brightnessup[] = { "/usr/bin/brightnessctl", "set", "+10%", NULL };
@@ -100,6 +106,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
+    { MODKEY,                       XK_y,      spawn,          {.v = ytcmd } },
 	{ MODKEY,			            XK_F4,	   spawn,	       {.v = brightnessup} },
 	{ MODKEY,		            	XK_F3,	   spawn, 	       {.v = brightnessdown} },
 	{ MODKEY,		            	XK_F9,	   spawn,	       {.v = mute} },
@@ -152,6 +159,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { MODKEY|ShiftMask,             XK_F1,     spawn,          { .v = shutdowncmd} },
+    { MODKEY|ShiftMask,             XK_F2,     spawn,          { .v = rebootcmd} }
 };
 
 /* button definitions */
