@@ -5,10 +5,10 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx	    = 0;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 25;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 25;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 25;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 25;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -95,8 +95,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-l", "20", "-m", dmenumon, "-fn"
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[] = { "librewolf", NULL};
 static const char *ytcmd[] = {"freetube", NULL};
-static const char *shutdowncmd[] = {"/home/brian/prompt.sh", "Do you want to shutdown?", "shutdown -h now"};
-static const char *rebootcmd[] = {"/home/brian/prompt.sh", "Do you want to reboot?", "reboot"};
+static const char *shutdowncmd[] = {"/home/brian/.scripts/prompt.sh", "Do you want to shutdown?", "shutdown -h now"};
+static const char *rebootcmd[] = {"/home/brian/.scripts/prompt.sh", "Do you want to reboot?", "reboot"};
 
 //replace "amdgpu_b10 with your own device, copy device name from "brightnessctl -l"
 static const char *brightnessup[] = { "/usr/bin/brightnessctl", "set", "+10%", NULL };
