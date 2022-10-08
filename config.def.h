@@ -12,13 +12,14 @@ static const unsigned int gappov    = 25;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "terminus:size=12:style=bold:antialias=true", "fontawesome:size=12:antialias=true" };
+static const char *fonts[]          = { "terminus:size=14:style=bold:antialias=true", "fontawesome:size=12:antialias=true" };
 static const char dmenufont[]       = "terminus:size=12:style=bold:antialias=true";
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#3b4252";
 static const char col_gray3[]       = "#d8dee9";
 static const char col_gray4[]       = "#4c566a";
 static const char col_cyan[]        = "#81a1c1";
+static const char *test = "test";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
@@ -33,7 +34,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "6", "7", "8", "" };
+static const char *tags[] = { "", "", "", "", "", "", "7", "8", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -88,7 +89,6 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-l", "20", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
