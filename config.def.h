@@ -95,27 +95,23 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-l", "20", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "",NULL };
 static const char *browsercmd[] = { "librewolf", NULL};
 static const char *ytcmd[] = {"freetube", NULL};
 static const char *shutdowncmd[] = {"/home/brian/.scripts/prompt.sh", "Do you want to shutdown?", "shutdown -h now"};
 static const char *rebootcmd[] = {"/home/brian/.scripts/prompt.sh", "Do you want to reboot?", "reboot"};
-
-//replace "amdgpu_b10 with your own device, copy device name from "brightnessctl -l"
-static const char *brightnessup[] = { "/usr/bin/brightnessctl", "set", "+10%", NULL };
-static const char *brightnessdown[] = { "/usr/bin/brightnessctl", "set", "10%-", NULL };
 static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
 static const char *mute[] = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char *lockcmd[] = { "/home/brian/.scripts/bls", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
     { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
     { MODKEY,                       XK_y,      spawn,          {.v = ytcmd } },
-	{ MODKEY,			            XK_F4,	   spawn,	       {.v = brightnessup} },
-	{ MODKEY,		            	XK_F3,	   spawn, 	       {.v = brightnessdown} },
 	{ MODKEY,		            	XK_F10,	   spawn,	       {.v = mute} },
 	{ MODKEY,		            	XK_F11,	   spawn,	       {.v = downvol} },
 	{ MODKEY,		               	XK_F12,	   spawn,	       {.v = upvol} },
