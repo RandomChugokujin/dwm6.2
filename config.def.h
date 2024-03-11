@@ -15,7 +15,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 26;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int vertpad            = 15;       /* vertical padding of bar */
 static const int sidepad            = 15;       /* horizontal padding of bar */
-static const char *fonts[]          = { "terminus:size=12:style=bold:antialias=true", "fontawesome:size=12:antialias=true" };
+static const char *fonts[]          = { "terminus:size=12:style=bold:antialias=true", "Symbols Nerd Font:size=12:antialias=true" };
 static const char dmenufont[]       = "terminus:size=12:style=bold:antialias=true";
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#3b4252";
@@ -36,7 +36,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "7", "8", "" };
+static const char *tags[] = { "", "", "", "", "󰗃", "󰝚", "", "󰙯", "󰪪" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
