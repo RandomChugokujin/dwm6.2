@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx	    = 0;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
@@ -26,7 +26,7 @@ static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+  [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 static const unsigned int alphas[][3]      = {
@@ -112,8 +112,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = screenshotcmd } },
-    { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
-    { MODKEY,                       XK_y,      spawn,          {.v = ytcmd } },
+  { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
+  { MODKEY,                       XK_y,      spawn,          {.v = ytcmd } },
 	{ MODKEY,		            	XK_F10,	   spawn,	       {.v = mute} },
 	{ MODKEY,		            	XK_F11,	   spawn,	       {.v = downvol} },
 	{ MODKEY,		               	XK_F12,	   spawn,	       {.v = upvol} },
@@ -164,8 +164,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    { MODKEY|ShiftMask,             XK_F1,     spawn,          { .v = shutdowncmd} },
-    { MODKEY|ShiftMask,             XK_F2,     spawn,          { .v = rebootcmd} }
+  { MODKEY|ShiftMask,             XK_F1,     spawn,          { .v = shutdowncmd} },
+  { MODKEY|ShiftMask,             XK_F2,     spawn,          { .v = rebootcmd} }
 };
 
 /* button definitions */
