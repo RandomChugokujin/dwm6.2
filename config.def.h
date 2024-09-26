@@ -114,9 +114,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = screenshotcmd } },
   { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
   { MODKEY,                       XK_y,      spawn,          {.v = ytcmd } },
-	{ MODKEY,		            	XK_F10,	   spawn,	       {.v = mute} },
-	{ MODKEY,		            	XK_F11,	   spawn,	       {.v = downvol} },
-	{ MODKEY,		               	XK_F12,	   spawn,	       {.v = upvol} },
+	{ MODKEY,		            	      XK_F10,	   spawn,	       {.v = mute} },
+	{ MODKEY,		            	      XK_F11,	   spawn,	       {.v = downvol} },
+	{ MODKEY,		               	    XK_F12,	   spawn,	       {.v = upvol} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -127,19 +127,19 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY|Mod4Mask,              XK_z,      incrgaps,       {.i = +5 } },
 	{ MODKEY|Mod4Mask,              XK_x,      incrgaps,       {.i = -5 } },
-	{ MODKEY|Mod4Mask,              XK_i,      incrigaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_o,      incrogaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_6,      incrihgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_7,      incrivgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_8,      incrohgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
-	{ MODKEY,                       XK_a,      togglegaps,     {0} },
+	/*{ MODKEY|Mod4Mask,              XK_i,      incrigaps,      {.i = +1 } },*/
+	/*{ MODKEY|Mod4Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },*/
+	/*{ MODKEY|Mod4Mask,              XK_o,      incrogaps,      {.i = +1 } },*/
+	/*{ MODKEY|Mod4Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },*/
+	/*{ MODKEY|Mod4Mask,              XK_6,      incrihgaps,     {.i = +1 } },*/
+	/*{ MODKEY|Mod4Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },*/
+	/*{ MODKEY|Mod4Mask,              XK_7,      incrivgaps,     {.i = +1 } },*/
+	/*{ MODKEY|Mod4Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },*/
+	/*{ MODKEY|Mod4Mask,              XK_8,      incrohgaps,     {.i = +1 } },*/
+	/*{ MODKEY|Mod4Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },*/
+	/*{ MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } },*/
+	/*{ MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },*/
+	/*{ MODKEY,                       XK_a,      togglegaps,     {0} },*/
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_A,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
