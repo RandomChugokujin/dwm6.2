@@ -15,8 +15,8 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 26;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int vertpad            = 15;       /* vertical padding of bar */
 static const int sidepad            = 15;       /* horizontal padding of bar */
-static const char *fonts[]          = { "terminus:size=12:style=bold:antialias=true", "Symbols Nerd Font:size=12:antialias=true" };
-static const char dmenufont[]       = "terminus:size=12:style=bold:antialias=true";
+static const char *fonts[]          = { "Hack Nerd Font Mono:size=12:style=bold:antialias=true" };
+static const char dmenufont[]       = "Hack Nerd Font Mono:size=12:style=bold:antialias=true";
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#3b4252";
 static const char col_gray3[]       = "#d8dee9";
@@ -95,7 +95,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-l", "20", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "",NULL };
+// static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "",NULL };
+static const char *termcmd[]  = { "kitty",NULL };
 static const char *screenshotcmd[] = {"xfce4-screenshooter", NULL};
 static const char *browsercmd[] = { "librewolf", NULL};
 static const char *ytcmd[] = {"freetube", NULL};
@@ -140,7 +141,7 @@ static Key keys[] = {
 	/*{ MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } },*/
 	/*{ MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },*/
 	/*{ MODKEY,                       XK_a,      togglegaps,     {0} },*/
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_A,      defaultgaps,    {0} },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_a,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
